@@ -15,6 +15,11 @@
     </a>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="{{ route('category.index') }}">
+      <span class="nav-link-title">Kategori</span>
+    </a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" href="{{ route('employee.index') }}">
       <span class="nav-link-title">Pegawai</span>
     </a>

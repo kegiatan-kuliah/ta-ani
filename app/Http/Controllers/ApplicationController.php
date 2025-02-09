@@ -122,4 +122,11 @@ class ApplicationController extends Controller
         $pdf = Pdf::loadView('pdf.application.daily_report', ['applications' => $applications])->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
+
+    public function letter($id)
+    {
+        $application = $this->table->findOrFail($id);
+        $pdf = Pdf::loadView('pdf.application.letter', ['application' => $application])->setPaper('a4', 'potrait');
+        return $pdf->stream();
+    }
 }

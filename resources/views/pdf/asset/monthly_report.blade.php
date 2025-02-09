@@ -44,7 +44,7 @@
         }
 
         .left {
-          float: right%;
+          float: right;
         }
 
         .right {

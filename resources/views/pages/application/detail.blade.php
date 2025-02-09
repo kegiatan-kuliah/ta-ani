@@ -19,6 +19,11 @@
               Tolak
             </a>
           @endif
+          @if($data->status === 'APPROVE')
+            <a href="{{ route('application.letter', $data->id) }}" class="btn btn-primary btn-5 d-sm-inline-block">
+              Cetak SK
+            </a>
+          @endif
         </div>
       </div>
     </div>

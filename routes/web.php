@@ -9,6 +9,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\PurposeController;
+use App\Http\Controllers\ApplicationController;
 
 Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(function () {
     Route::get('/', 'index')->name('index');
@@ -74,5 +75,14 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/', 'store')->name('store');
         Route::put('/', 'update')->name('update');
         Route::get('/destroy/{id}', 'destroy')->name('destroy');
+    });
+
+    Route::controller(ApplicationController::class)->prefix('application')->name('application.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/new', 'new')->name('new');
+        Route::get('/detail/{id}', 'detail')->name('detail');
+        Route::get('/approve/{id}', 'approve')->name('approve');
+        Route::get('/reject/{id}', 'reject')->name('reject');
+        Route::post('/', 'store')->name('store');
     });
 });

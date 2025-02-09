@@ -35,4 +35,9 @@
       <span class="nav-link-title">Pegawai</span>
     </a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('application.index') }}">
+      <span class="nav-link-title">Permohonan</span>
+    </a>
+  </li>
 </ul>

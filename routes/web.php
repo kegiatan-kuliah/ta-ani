@@ -84,5 +84,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/approve/{id}', 'approve')->name('approve');
         Route::get('/reject/{id}', 'reject')->name('reject');
         Route::post('/', 'store')->name('store');
+        Route::get('/daily-report', 'dailyReport')->name('daily_report');
     });
 });

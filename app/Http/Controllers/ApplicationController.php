@@ -11,6 +11,7 @@ use App\Models\Employee;
 use App\Models\Asset;
 use Carbon\Carbon;
 use Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ApplicationController extends Controller
 {
@@ -113,5 +114,12 @@ class ApplicationController extends Controller
         $store = $data->save();
 
         return redirect()->route('application.index')->with('success', 'Data rejected successfully');
+    }
+
+    public function dailyReport()
+    {
+        $applications = $this->table->whereDate('date', Carbon::now())->where('status','APPROVE')->get();
+        $pdf = Pdf::loadView('pdf.application.daily_report', ['applications' => $applications])->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 }

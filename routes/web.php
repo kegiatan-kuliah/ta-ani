@@ -60,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(AssetController::class)->prefix('asset')->name('asset.')->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/report', 'report')->name('report');
         Route::get('/new', 'new')->name('new');
         Route::get('/{id}', 'edit')->name('edit');
         Route::get('/detail/{id}', 'detail')->name('detail');

@@ -9,6 +9,7 @@ use App\Models\Group;
 use App\Models\Location;
 use App\DataTables\AssetsDataTable;
 use Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AssetController extends Controller
 {
@@ -160,5 +161,15 @@ class AssetController extends Controller
         $destroy = $data->delete();
 
         return redirect()->route('asset.index')->with('success', 'Data deleted successfully');
+    }
+
+    public function report()
+    {
+        $assets = $this->table->whereBetween('created_at', [
+            now()->startOfMonth(),
+            now()->endOfDay()
+        ])->get();
+        $pdf = Pdf::loadView('pdf.asset.monthly_report', ['assets' => $assets])->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 }

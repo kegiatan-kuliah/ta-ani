@@ -26,6 +26,11 @@
     </div>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="{{ route('purpose.index') }}">
+      <span class="nav-link-title">Jenis Keperluan</span>
+    </a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" href="{{ route('employee.index') }}">
       <span class="nav-link-title">Pegawai</span>
     </a>

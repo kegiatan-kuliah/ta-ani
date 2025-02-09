@@ -94,6 +94,7 @@
     </table>
   
     <div class="signature-container">
+    <p style="text-align:right;">Solok Selatan, {{ Carbon::now()->translatedFormat('d F Y') }}</p>
       <div class="signature left">
           <p>Mengetahui</p>
           <p>Kepala Sekolah</p>
@@ -106,7 +107,6 @@
       </div>
 
       <div class="signature right">
-          <p>Solok Selatan, {{ Carbon::now()->translatedFormat('d F Y') }}</p>
           <p>Pengurus Barang Pembantu Sekolah</p>
           <br>
           <br>

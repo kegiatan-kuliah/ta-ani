@@ -7,6 +7,7 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AssetController;
 
 Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(function () {
     Route::get('/', 'index')->name('index');
@@ -52,6 +53,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/{id}', 'edit')->name('edit');
         Route::post('/', 'store')->name('store');
         Route::put('/', 'update')->name('update');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
+    });
+
+    Route::controller(AssetController::class)->prefix('asset')->name('asset.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/new', 'new')->name('new');
+        Route::get('/{id}', 'edit')->name('edit');
+        Route::get('/detail/{id}', 'detail')->name('detail');
+        Route::post('/', 'store')->name('store');
+        Route::post('/update', 'update')->name('update');
         Route::get('/destroy/{id}', 'destroy')->name('destroy');
     });
 });

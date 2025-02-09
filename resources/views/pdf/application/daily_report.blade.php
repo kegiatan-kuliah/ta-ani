@@ -55,9 +55,17 @@
                 <tr>
                     <td>{{ $index+1 }}</td>
                     <td>{{ Carbon::parse($application->date)->translatedFormat('d F Y') }}</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td>
+                        @foreach($application->items as $item)
+                            {{ $item->name }} 
+                        @endforeach
+                    </td>
+                    <td>{{ $application->total_quantity }}</td>
+                    <td>
+                        @foreach($application->items as $item)
+                            {{ $item->unit }} 
+                        @endforeach
+                    </td>
                     <td>{{ $application->purpose }}</td>
                     <td>{{ $application->employee->name }}</td>
                     <td>{{ $application->employee->identity_no }}</td>

@@ -9,6 +9,11 @@ class Employee extends Model
     protected $table = 'employees';
 
     protected $fillable = [
-        'name','identity_no','member_no','gender','phone_no','address','photo','user_id'
+        'name','identity_no','gender','phone_no','address','photo','user_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

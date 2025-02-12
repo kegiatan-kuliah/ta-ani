@@ -26,11 +26,6 @@
             {{ html()->select('requestor_id', ['' => 'Pilih Pemohon'] + $employees->toArray())
                 ->class('form-control') }}
           </div>
-          <div class="mb-3">
-            {{ html()->label('Foto', 'photo')->class('form-label') }}
-            {{ html()->file('photo')
-              ->class('form-control')->attribute('required', true) }}
-          </div>
           <div class="table-responsive">
             <table class="table table-bordered">
               <thead>

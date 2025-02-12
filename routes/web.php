@@ -82,7 +82,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/new', 'new')->name('new');
         Route::get('/detail/{id}', 'detail')->name('detail');
-        Route::get('/approve/{id}', 'approve')->name('approve');
+        Route::post('/approve', 'approve')->name('approve');
         Route::get('/reject/{id}', 'reject')->name('reject');
         Route::post('/', 'store')->name('store');
         Route::get('/daily-report', 'dailyReport')->name('daily_report');

@@ -12,7 +12,7 @@
             Kembali
           </a>
           @if($data->status === 'WAITING')
-            <a href="{{ route('application.approve', $data->id) }}" class="btn btn-primary btn-5 d-sm-inline-block">
+            <a href="#" class="btn btn-primary btn-2" data-bs-toggle="modal" data-bs-target="#modal-simple">
               Setujui
             </a>
             <a href="{{ route('application.reject', $data->id) }}" class="btn btn-danger btn-5 d-sm-inline-block">
@@ -32,6 +32,32 @@
     </div>
   </div>
 </div>
+
+<div class="modal modal-blur fade" id="modal-simple" tabindex="-1" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog modal-1 modal-dialog-centered" role="document">
+    {{ html()->form('POST', route('application.approve'))->attribute('enctype', 'multipart/form-data')->open() }}
+      {{ html()->hidden('id', $data->id) }}
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Setujui Permohonan</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            {{ html()->label('Foto Penerimaan Barang', 'photo')->class('form-label') }}
+            {{ html()->file('photo')
+              ->class('form-control')->attribute('required', true) }}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    {{ html()->form()->close() }}
+	</div>
+</div>
+
 @endsection
 @section('content')
 <div class="row row-cards">
@@ -86,9 +112,11 @@
             </table>
           </div>
         </div>
-        <div class="col-6">
-          <img src="/storage/{{ $data->photo }}" alt="No Image">
-        </div>
+        @if($data->photo)
+          <div class="col-6">
+            <img src="/storage/{{ $data->photo }}" alt="No Image">
+          </div>
+        @endif
       </div>
     </div>
   </div>

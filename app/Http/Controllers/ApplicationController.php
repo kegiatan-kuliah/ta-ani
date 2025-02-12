@@ -46,13 +46,18 @@ class ApplicationController extends Controller
             'purpose' => 'required',
             'requestor_id' => 'required',
         ]);
-        $path = $request->file('photo')->store('assets','public');
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withErrors($validator);
+        }
+
         $application = Application::create([
             'application_no' => $this->table->generateApplicationNo(),
             'date' => Carbon::now()->format('Y-m-d'),
             'total_quantity' => 0,
             'purpose' => $request->purpose,
-            'photo' => $path,
+            'photo' => '',
             'requestor_id' => $request->requestor_id
         ]);
         if($request->has('items') && count($request->items) > 0) {
@@ -103,8 +108,20 @@ class ApplicationController extends Controller
         ]);
     }
 
-    public function approve($id) {
-        $data = $this->table->findOrFail($id);
+    public function approve(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                    ->withErrors($validator);
+        }
+
+        $path = $request->file('photo')->store('assets','public');
+
+        $data = $this->table->findOrFail($request->id);
+        $data->photo = $path;
         $data->status = 'APPROVE';
         $store = $data->save();
 

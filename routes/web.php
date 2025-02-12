@@ -88,5 +88,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/daily-report', 'dailyReport')->name('daily_report');
         Route::get('/letter/{id}', 'letter')->name('letter');
         Route::get('/receipt/{id}', 'receipt')->name('receipt');
+        Route::post('/report-period', 'generateReportPeriod')->name('report_period');
+
     });
 });

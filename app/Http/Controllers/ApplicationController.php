@@ -139,4 +139,16 @@ class ApplicationController extends Controller
         $pdf = Pdf::loadView('pdf.application.receipt', ['application' => $application])->setPaper('a4', 'potrait');
         return $pdf->stream();
     }
+
+    public function generateReportPeriod(Request $request)
+    {
+        $dates = explode(' - ', $request->dates);
+        $applications = $this->table->whereBetween('date',[$dates[0], $dates[1]])->where('status','APPROVE')->get();
+        $pdf = Pdf::loadView('pdf.application.period_report', [
+            'applications' => $applications,
+            'startDate' => $dates[0],
+            'endDate' => $dates[1]
+        ])->setPaper('a4', 'landscape');
+        return $pdf->stream();
+    }
 }

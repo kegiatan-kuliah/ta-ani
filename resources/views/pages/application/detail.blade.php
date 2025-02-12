@@ -36,9 +36,6 @@
     <div class="card-body">
       <div class="row">
         <div class="col-6">
-          <img src="/storage/{{ $data->photo }}" alt="No Image" class="img-responsive" >
-        </div>
-        <div class="col-6">
           <div class="mb-3">
             {{ html()->label('No Permohonan', 'code')->class('form-label') }}
             <p>{{ $data->application_code }} </p>
@@ -85,6 +82,9 @@
               </tbody>
             </table>
           </div>
+        </div>
+        <div class="col-6">
+          <img src="/storage/{{ $data->photo }}" alt="No Image">
         </div>
       </div>
     </div>

@@ -74,14 +74,17 @@
 </head>
 <body>
 
-    <img src="logo.png" class="logo" alt="Logo">
-    <div class="header">
-        <p>PEMERINTAH PROVINSI SUMATERA BARAT</p>
-        <p>SMK NEGERI 1 SOLOK SELATAN</p>
+    <div>
+        <img src="{{ public_path('img/logo-provinsi-sumbar.png') }}" alt="" width="50px" height="50px" style="position: absolute; top: 25px;">
+        <h3 style="margin-bottom: 0px; text-align: center;">PEMERINTAH PROVINSI SUMATERA BARAT</h3>
+        <h1 style="margin-top: 0px; text-align: center;">SMK NEGERI 1 SOLOK SELATAN</h1>
+        <hr>
     </div>
     
-    <div class="subtitle">SURAT PERINTAH PENGELUARAN/ PENYALURAN BARANG</div>
-    <div class="subtitle">Nomor : {{ $application->application_no }}</div>
+    <div style="margin-top: 15px;">
+        <div class="subtitle">SURAT PERINTAH PENGELUARAN/ PENYALURAN BARANG</div>
+        <div class="subtitle">Nomor : {{ $application->application_no }}</div>
+    </div>
     <br>
 
     <table class="info-table">
@@ -137,18 +140,42 @@
         </tbody>
     </table>
 
-    <div class="signature-container">
-        <div class="signature left">
-            <p>Mengetahui</p>
-            <p>Pengurus Barang Pembantu</p>
-            <div>________________________</div>
+    <div style="width: 100%; margin-top: 40px; margin-bottom: 40px;">
+        <div style="width: 50%; float: left; margin-bottom: 40px;">
+            <br>
+            <br>
+            <br>
+            <p style="margin-top:0px; margin-bottom: 0px;">Pengurus Barang Pembantu</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p style="margin-top:0px; margin-bottom: 0px;">ZUMMI WALNI,A.Md</p>
+            <p style="margin-top:0px; margin-bottom: 0px;">NIP. 198310162014062002</p>
         </div>
-
-        <div class="signature right">
-            <p>Muaralabuh, {{ Carbon::now()->translatedFormat('d F Y') }}</p>
-            <p>Yang Meminta/Menerima</p>
-            <div>________________________</div>
+        <div style="width: 50%; float: right; text-align: right; margin-bottom: 40px;">
+            <p>Solok Selatan, {{ Carbon::now()->translatedFormat('d F Y')}} </p>
+            <p style="margin-top:0px; margin-bottom: 0px;">Yang Meminta</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p style="margin-top:0px; margin-bottom: 0px;">{{ $application->employee->name }}</p>
+            <p style="margin-top:0px; margin-bottom: 0px;">NIP. {{ $application->employee->identity_no }}</p>
         </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="text-align: center; margin-top: 80px;">
+        <p style="margin-top:0px; margin-bottom: 0px;">Mengetahui</p>
+        <p style="margin-top:0px; margin-bottom: 0px;">Kepala Sekolah</p>
+        <br>
+        <br>
+        <br>
+        <p style="margin-top:0px; margin-bottom: 0px;">EFRIZOLSE.MM</p>
+        <p style="margin-top:0px; margin-bottom: 0px;">NIP. 197212012002121002</p>
     </div>
 
 </body>

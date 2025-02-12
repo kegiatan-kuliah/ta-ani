@@ -87,5 +87,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/', 'store')->name('store');
         Route::get('/daily-report', 'dailyReport')->name('daily_report');
         Route::get('/letter/{id}', 'letter')->name('letter');
+        Route::get('/receipt/{id}', 'receipt')->name('receipt');
     });
 });

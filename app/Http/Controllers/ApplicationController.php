@@ -58,6 +58,9 @@ class ApplicationController extends Controller
         if($request->has('items') && count($request->items) > 0) {
             $total = 0;
             foreach($request->items as $item) {
+                if(!isset($item['id'])) {
+                    continue;
+                }
                 if(!isset($item['qty'])) {
                     return redirect()->back()->with('danger','Pastikan anda mengisi jumlah pada barang yang dipilih');
                 }
@@ -127,6 +130,13 @@ class ApplicationController extends Controller
     {
         $application = $this->table->findOrFail($id);
         $pdf = Pdf::loadView('pdf.application.letter', ['application' => $application])->setPaper('a4', 'potrait');
+        return $pdf->stream();
+    }
+
+    public function receipt($id)
+    {
+        $application = $this->table->findOrFail($id);
+        $pdf = Pdf::loadView('pdf.application.receipt', ['application' => $application])->setPaper('a4', 'potrait');
         return $pdf->stream();
     }
 }

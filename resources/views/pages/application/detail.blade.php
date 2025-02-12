@@ -20,6 +20,9 @@
             </a>
           @endif
           @if($data->status === 'APPROVE')
+            <a href="{{ route('application.receipt', $data->id) }}" class="btn btn-primary btn-5 d-sm-inline-block">
+              Cetak Tanda Terima Barang
+            </a>
             <a href="{{ route('application.letter', $data->id) }}" class="btn btn-primary btn-5 d-sm-inline-block">
               Cetak SK
             </a>

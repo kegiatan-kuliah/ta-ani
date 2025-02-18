@@ -23,6 +23,7 @@
       <div class="col-12 col-lg-6 col-xl-4 border-top-wide border-primary d-flex flex-column justify-content-center">
         <div class="container container-tight my-5 px-lg-5">
           <div class="text-center mb-4">
+            <img src="{{ asset('img/LOGO SMK PNG.png') }}" alt="" srcset="">
             <a href="#" class="navbar-brand navbar-brand-autodark">
               <h2>E-Asset</h2>
             </a>
@@ -73,7 +74,7 @@
       </div>
       <div class="col-12 col-lg-6 col-xl-8 d-none d-lg-block">
         <!-- Photo -->
-        <div class="bg-cover h-100 min-vh-100" style="background-image: url(./static/photos/finances-us-dollars-and-bitcoins-currency-money-2.jpg)"></div>
+        <div class="bg-cover h-100 min-vh-100" style="background-image: url(./static/photos/smk_gambar.png)"></div>
       </div>
     </div>
     <!-- Libs JS -->
